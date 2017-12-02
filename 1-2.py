@@ -20,24 +20,27 @@ my_input = '64971395968289825957777798234951578482268493996619135916436993343536
            '695594299657387614793341626318866519144574571816535351149394735916975448425618171572917195165594323552199' \
            '346814729617189679698944337146'
 
-first_input = '1122'
-second_input = '1111'
-third_input = '1234'
-fourth_input = '91212129'
+first_input = '1212'
+second_input = '1221'
+third_input = '123425'
+fourth_input = '123123'
+fifth_input = '12131415'
 
 
-def inverse_captcha(input_string):
+def inverse_captcha_second_part(input_string):
     total = 0
     length = len(input_string)
+    half_length = length // 2
     for index, number in enumerate(input_string):
-        if number == input_string[(index + 1) % length]:
+        if number == input_string[(index + half_length) % length]:
             total += int(number)
     return total
 
 
-assert inverse_captcha(first_input) == 3
-assert inverse_captcha(second_input) == 4
-assert inverse_captcha(third_input) == 0
-assert inverse_captcha(fourth_input) == 9
+assert inverse_captcha_second_part(first_input) == 6
+assert inverse_captcha_second_part(second_input) == 0
+assert inverse_captcha_second_part(third_input) == 4
+assert inverse_captcha_second_part(fourth_input) == 12
+assert inverse_captcha_second_part(fifth_input) == 4
 
-print(inverse_captcha(my_input))
+print(inverse_captcha_second_part(my_input))
